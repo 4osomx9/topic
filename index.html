@@ -33,37 +33,67 @@
         .emoji{
           text-align: center; 
         }
-        .nnavbar-brand{
-          text-align: center;
+
+        /* 確保 navbar 高度固定 */
+        .navbar {
+            height: 70px;  /* 可根據需要調整 */
         }
+
+        /* 使 navbar-nav 垂直置中 */
+        .navbar-nav {
+            display: flex;
+            align-items: center;  /* 垂直置中所有 nav-items */
+        }
+
+        /* 調整每個 nav-item 的垂直對齊 */
+        .nav-item {
+            display: flex;
+            align-items: center;  /* 使 nav-item 內的內容垂直置中 */
+        }
+        body{
+          /* background-image: url("/img/bg.png") ; */
+          background: linear-gradient(rgba(255, 255, 255, 0.92),rgba(0, 0, 0, 0.92)), url("/img/bg3.png") no-repeat 0% 20%/ cover;
+          min-height: 100vh;
+        }
+
         </style> 
     </head> 
     <body> 
      
-      <nav class="navbar navbar-light bg-light navbar  navbar-expand-lg">
-        
-             <a class="navbar-brand" href="index.html">
-                    <img src="img/head.png" alt="" width="50" class="d-inline-block align-text-top">
-                    顏文字卡
-                    </a>
-
-
-                <ul class="navbar-nav me-auto my-2 my-lg-0 " style="--bs-scroll-height: 100px;">
-                    
-                  
-                  
-                  
-                  <li class="nav-item">
-
-                      
+      <nav class="navbar navbar-light bg-light navbar-expand-lg">
+        <div class="container-xl">
+            <!-- Navbar Brand (左邊) -->
+            <a class="navbar-brand" href="index.html">
+                <img src="img/head.png" alt="" width="50" class="d-inline-block align-text-top">
+            </a>
+    
+            <!-- Toggle Button for Mobile View (Hamburger Menu) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Menu (左邊) -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 d-flex align-items-center">
+                    <!-- 顏文字卡 -->
+                    <li class="nav-item">
+                        <a class="nav-link link-secondary" style="font-size: 40px;" href="index.html">顏文字卡</a>
+                    </li>
+    
+                    <!-- 首頁 -->
+                    <li class="nav-item">
                         <a class="nav-link active link-secondary" aria-current="page" href="index.html">首頁</a>
                     </li>
+    
+                    <!-- 全部標籤 -->
                     <li class="nav-item">
                         <a class="nav-link link-secondary" href="alllabel.html">全部標籤</a>
                     </li>
+    
+                    <!-- 分類 Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle link-secondary" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        分類
+                            分類
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                             <li><a class="dropdown-item" href="pink.html">粉色系</a></li>
@@ -78,11 +108,14 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="輸入標籤" aria-label="Search">
-                <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search-heart"></i></button>
+    
+                <!-- 搜索框 (右邊) -->
+                <form class="d-flex ms-auto">
+                    <input id="searchKeyword" class="form-control me-2" type="search" placeholder="輸入標籤" aria-label="Search">
+                    <button id="searchButton" class="btn btn-outline-danger" type="submit"><i class="bi bi-search-heart"></i></button>
                 </form>
-            
+            </div>
+        </div>
     </nav>
           <div class="container mt-5"> 
             <h1 class="text-center">顏文字卡</h1> 
@@ -319,15 +352,7 @@
                 </div>
               </div>
 
-              
-
-            </div>
-
-
-
-
-
-            <nav aria-label="Page navigation example">
+              <nav aria-label="Page navigation example">
                 <ul class="pagination nav justify-content-center position-absolute bottom-0 start-50 translate-middle-x">
                   <li class="page-item">
                     <a class="page-link" href="index.html" aria-label="Previous">
@@ -343,6 +368,14 @@
                   </li>
                 </ul>
               </nav>
+
+            </div>
+
+
+
+
+
+            
         </div> 
         <!-- 引入 Bootstrap JS 和 Popper.js --> 
          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> 
@@ -352,8 +385,8 @@
          <script>
           // 復制表情到選擇框 
           function copyEmoji(emoji) { 
-            document.getElementById('selectedEmoji').innerText += emoji; 
-        } 
+            document.getElementById('selectedEmoji').innerText += emoji
+        }; 
 
         // 複製選擇框 
         const clipboard = new ClipboardJS('.copyButton');
@@ -365,6 +398,59 @@
           document.getElementById('clearButton').addEventListener('click', function() { 
             document.getElementById('selectedEmoji').innerText = ''; }
             );
+
+
+          // 設定一個包含關鍵字和對應 URL 的陣列
+          const keywordData = [
+              { keyword: '粉', url: '/pink.html' },
+              { keyword: '粉色', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: '粉色系', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'pink', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              
+
+          ];
+
+          // 取得搜尋欄位和搜尋按鈕
+          const searchButton = document.getElementById('searchButton');
+          const searchInput = document.getElementById('searchKeyword');
+
+          // 當按鈕被點擊時觸發
+          searchButton.addEventListener('click', () => {
+              // 取得使用者輸入的關鍵字
+              const searchTerm = searchInput.value.trim();
+
+              if (searchTerm) {
+                  // 在陣列中搜尋是否有匹配的關鍵字
+                  const result = keywordData.find(item => item.keyword.toLowerCase() === searchTerm.toLowerCase());
+
+                  if (result) {
+                      // 找到匹配的關鍵字，跳轉到對應的 URL
+                      window.location.href = result.url;
+                  } else {
+                      // 如果找不到匹配的關鍵字，顯示提示訊息
+                      alert('找不到匹配的關鍵字');
+                  }
+              } else {
+                  // 如果沒有輸入關鍵字，顯示提示訊息
+                  alert('請輸入關鍵字');
+              }
+          });
          </script> 
     </body> 
 </html>

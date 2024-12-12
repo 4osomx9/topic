@@ -37,45 +37,88 @@
         .text-center{
           color: green;
         }
+         /* 確保 navbar 高度固定 */
+         .navbar {
+            height: 70px;  /* 可根據需要調整 */
+        }
+
+        /* 使 navbar-nav 垂直置中 */
+        .navbar-nav {
+            display: flex;
+            align-items: center;  /* 垂直置中所有 nav-items */
+        }
+
+        /* 調整每個 nav-item 的垂直對齊 */
+        .nav-item {
+            display: flex;
+            align-items: center;  /* 使 nav-item 內的內容垂直置中 */
+        }
         
+        body{
+          /* background-image: url("/img/bg.png") ; */
+          background: linear-gradient(rgba(255, 255, 255, 0.92),rgba(243, 255, 214, 0.92)), url("/img/bg3.png") no-repeat 0% 20%/ cover;
+          min-height: 100vh;
+        }
         </style> 
     </head> 
     <body> 
       <!--  -->
       <nav class="navbar navbar-light navbar  navbar-expand-lg" style="background-color:#e6ffe3;">
-        <a class="navbar-brand " href="index.html">
-          <img src="img/head.png" alt="" width="30" height="24"class="d-inline-block align-text-top">
-          顏文字卡
+        <div class="container-xl">
+          <!-- Navbar Brand (左邊) -->
+          <a class="navbar-brand" href="index.html">
+              <img src="img/head.png" alt="" width="50" class="d-inline-block align-text-top">
           </a>
-
-            <ul class="navbar-nav me-auto my-2 my-lg-0 " style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
-                    <a class="nav-link active link-secondary" aria-current="page" href="index.html">首頁</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link-secondary" href="alllabel.html">全部標籤</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle link-secondary" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    分類
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" href="pink.html">粉色系</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="blue.html">藍色系</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="yellow.html">黃色系</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="orange.html">橘色系</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="green.html">綠色系</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="輸入標籤" aria-label="Search">
-            <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search-heart"></i></button>
-            </form>
+  
+          <!-- Toggle Button for Mobile View (Hamburger Menu) -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- Navbar Menu (左邊) -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto my-2 my-lg-0 d-flex align-items-center">
+                  <!-- 顏文字卡 -->
+                  <li class="nav-item">
+                      <a class="nav-link link-secondary" style="font-size: 40px;" href="index.html">顏文字卡</a>
+                  </li>
+  
+                  <!-- 首頁 -->
+                  <li class="nav-item">
+                      <a class="nav-link active link-secondary" aria-current="page" href="index.html">首頁</a>
+                  </li>
+  
+                  <!-- 全部標籤 -->
+                  <li class="nav-item">
+                      <a class="nav-link link-secondary" href="alllabel.html">全部標籤</a>
+                  </li>
+  
+                  <!-- 分類 Dropdown -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle link-secondary" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          分類
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                          <li><a class="dropdown-item" href="pink.html">粉色系</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="blue.html">藍色系</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="yellow.html">黃色系</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="orange.html">橘色系</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="green.html">綠色系</a></li>
+                      </ul>
+                  </li>
+              </ul>
+  
+              <!-- 搜索框 (右邊) -->
+              <form class="d-flex ms-auto">
+                  <input class="form-control me-2" type="search" placeholder="輸入標籤" aria-label="Search">
+                  <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search-heart"></i></button>
+              </form>
+          </div>
+      </div>
     </nav>
 
           <div class="container mt-5"> 
