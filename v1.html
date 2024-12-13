@@ -30,180 +30,444 @@
         .emoji-box .emoji:active { 
             background-color: #dcdcdc; 
             } 
-        
+        .emoji{
+          text-align: center; 
+        }
+
+        /* 確保 navbar 高度固定 */
+        .navbar {
+            height: 70px;  /* 可根據需要調整 */
+        }
+
+        /* 使 navbar-nav 垂直置中 */
+        .navbar-nav {
+            display: flex;
+            align-items: center;  /* 垂直置中所有 nav-items */
+        }
+
+        /* 調整每個 nav-item 的垂直對齊 */
+        .nav-item {
+            display: flex;
+            align-items: center;  /* 使 nav-item 內的內容垂直置中 */
+        }
+        body{
+          /* background-image: url("/img/bg.png") ; */
+          background: linear-gradient(rgba(255, 255, 255, 0.92),rgba(0, 0, 0, 0.92)), url("img/bg3.png") no-repeat 0% 20%/ cover;
+          min-height: 100vh;
+        }
+
+        /* 選取位置變色 */
+        .card:hover{
+          border-width:medium; 
+          border-style:dashed;;
+          border-color:rgb(0, 0, 0);
+        }
+
+ 
         </style> 
     </head> 
     <body> 
-        <nav class="navbar navbar-expand-lg navbar navbar-light bg-light" >
-            <a class="navbar-brand " href="index.html">
-                <img src="img/head.png" alt="" width="30" height="24"class="d-inline-block align-text-top">
-                顏文字卡
-                </a>
-  
-                  <ul class="navbar-nav me-auto my-2 my-lg-0 " style="--bs-scroll-height: 100px;">
-                      <li class="nav-item">
-                          <a class="nav-link active link-secondary" aria-current="page" href="index.html">首頁</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link link-secondary" href="#">全部標籤</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle link-secondary" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          分類
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                              <li><a class="dropdown-item" href="happy.html">高興</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="angry.html">生氣</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="sad.html">難過</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-                  <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search-heart"></i></button>
-                  </form>
-              
-          </nav>
-        <div class="container mt-5"> 
+     
+
+      <!-- .navbar-expand-{sm|md|lg|xl}決定在哪個斷點以上就出現漢堡式選單 -->
+  <!-- navbar-dark 文字顏色 .bg-dark 背景顏色 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+    <!-- .navbar-brand 左上LOGO位置 -->
+    <a class="navbar-brand" href="index.html">
+      <img src="img/head.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <span class="h3 mx-1">顏文字庫</span>
+    </a>
+    <!-- .navbar-toggler 漢堡式選單按鈕 -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- .navbar-toggler-icon 漢堡式選單Icon -->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- .collapse.navbar-collapse 用於外層中斷點群組和隱藏導覽列內容 -->
+    <!-- 選單項目&漢堡式折疊選單 -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- active表示當前頁面 -->
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">首頁<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alllabel.html">全部標籤</a>
+        </li>
+        <!-- .dropdown Navbar選項使用下拉式選單 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">分類</a>
+          <!-- .dropdown-menu 下拉選單內容 -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="pink.html">粉色系</a>
+            <a class="dropdown-item" href="blue.html">藍色系</a>
+            <a class="dropdown-item" href="yellow.html">黃色系</a>
+            <a class="dropdown-item" href="orange.html">橘色系</a>
+            <a class="dropdown-item" href="green.html">綠色系</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+        </button>
+      </form>
+    </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+      
+
+
+          <div class="container mt-5"> 
             <h1 class="text-center">顏文字卡</h1> 
             <div class="row mt-4"> 
-                <div class="col-12 text-center"> 
-                     <div id="selectedEmoji" class="mt-2 p-3 bg-light border rounded ">
-                     
-                   
-                     </div>    
-                    <button id="clearButton" ><i class="bi bi-clipboard2-heart-fill"></i></button>
+                <div class="col-12 text-center d-flex align-items-center justify-content-center"> 
+                  
+                    <div id="selectedEmoji" class="mt-2 p-3 bg-light border deshed w-100 text-center me-2">
+                    </div>    
+                    <button class="copyButton" data-clipboard-target="#selectedEmoji" id="copyButton" onclick="copyButton"><i class="bi bi-clipboard2-heart-fill"></i></button>
                     <button id="clearButton" class="bi bi-trash-fill"></button>
-                    <!-- 堆疊彈出視窗 -->
-                     <!-- <div class="toast-container position-static">
-                        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                          <div class="toast-header">
-                            <img src="..." class="rounded me-2" alt="...">
-                            <strong class="me-auto">Bootstrap</strong>
-                            <small class="text-body-secondary">just now</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                          </div>
-                          <div class="toast-body">
-                            See? Just like this.
-                          </div>
-                        </div>
-                    </div> -->
-                    
-                    
                 </div> 
             </div> 
             <div class="emoji-box mt-4"> 
-              <div class="row"></div>
-              <div class="col-sm-6">
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('😊')">😊</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6"></div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('😂')">😂</div>
-                </div>
-              </div>
-            </div>
-          </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                   <div class="emoji" onclick="copyEmoji('😍')">😍</div> 
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('😎')">😎</div> 
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('🤔')">🤔</div>
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  </div><div class="emoji" onclick="copyEmoji('😢')">😢</div> 
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('😜')">😜</div>
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('😇')">😇</div> 
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('😏')">😏</div> 
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('😈')">😈</div>
-                
-              </div>
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('🤩')">🤩</div>
-                </div>
-              </div>
-                
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <div class="emoji" onclick="copyEmoji('🤗')">🤗</div>
-                </div>
-              </div>   
-               
-                
-                 
-                
-                 
-                
-                
-                 
-                 
-                 
+            
             </div> 
-            <nav aria-label="Page navigation example">
+
+          <div class="row">
+
+            <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card"> 
+                  <div class="card-body">
+                    <div class="emoji" onclick="copyEmoji('*🎀+ ꙳ 🍡꒱⁺◦')">*🎀+ ꙳ 🍡꒱⁺◦</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('🎀 ⊹ ⁺˳🧸⊹✭ ˚ 💭')">🎀 ⊹ ⁺˳🧸⊹✭ ˚ 💭</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('👋🏻 ᯓ!˚꒱.🗯🌸˚◞')">👋🏻 ᯓ!˚꒱.🗯🌸˚◞</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('  🧴𖠵🎀ャ💒˚🍧⸝彡')">  🧴𖠵🎀ャ💒˚🍧⸝彡</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('  ꙳.🖇യ🏩🍧•₊˚🐰⁺◦')">  ꙳.🖇യ🏩🍧•₊˚🐰⁺◦</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('   ˖💄 ֺ 💒 𓇻 🍥 ✧ᝰ꙳')">   ˖💄 ֺ 💒 𓇻 🍥 ✧ᝰ꙳</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('♡ ˚ ༘ * 🚎* ꒱📄𓈒 *🚏。')">♡ ˚ ༘ * 🚎* ꒱📄𓈒 *🚏。</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('.°꒦꒷ミ🦈₊˚  .  ̫ .🥽')"> .°꒦꒷ミ🦈₊˚  .  ̫ .🥽</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('˗ˋˏ 🌊‧̍ 彡💧₊˚.༄ˎˊ˗。')">˗ˋˏ 🌊‧̍ 彡💧₊˚.༄ˎˊ˗。</div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card"> 
+                  <div class="card-body">
+                    <div class="emoji" onclick="copyEmoji(' ˖꒱ ✳︎ 🥄 ⌇⋆🍶 💙')">  ˖꒱ ✳︎ 🥄 ⌇⋆🍶 💙</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('ꔛ🐋⁕🥛𖥧 𖧧˖꙳◦。')">ꔛ🐋⁕🥛𖥧 𖧧˖꙳◦。</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                                
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji(' ·˚ ༘ 🧢✧🥣༉‧₊✈️')">·˚ ༘ 🧢✧🥣༉‧₊✈️</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('🛁`♡︎🎐≀✧·🦋𖤐 ꙳🐬`♡︎🍽️≀✧₊🥥˚·')">🛁`♡︎🎐≀✧·🦋𖤐 ꙳🐬`♡︎🍽️≀✧₊🥥˚·</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('˚💙₊⁺ 🎼₊⁺⑉📘 ⟢。 💿‧₊✧🥣༉‧₊˚🗞️꒷')">˚💙₊⁺ 🎼₊⁺⑉📘 ⟢。 💿‧₊✧🥣༉‧₊˚🗞️꒷</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('꒰ 🧀 ⤾·˚🥛🦒 ༘ ')">꒰ 🧀 ⤾·˚🥛🦒 ༘ </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('✦⸝⸝ 🛵⌇📔🥛 𖥾.')">✦⸝⸝ 🛵⌇📔🥛 𖥾.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('⁺◦ 🚖 ,📒✧.* 🥂')">⁺◦ 🚖 ,📒✧.* 🥂</div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card"> 
+                  <div class="card-body">
+                    <div class="emoji" onclick="copyEmoji('˙ ͜ʟ˙ ✏️📒 💭*·˚   ')">˙ ͜ʟ˙ ✏️📒 💭*·˚   </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('ꕀ🍰♡🍨◞💛ˊˎ')">ꕀ🍰♡🍨◞💛ˊˎ</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('｡･🍯 ⋄🐝ᯓ 🌞‘’')">｡･🍯 ⋄🐝ᯓ 🌞‘’</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('⍤🌻 ˟̫ː🌾⸝⸝☀️´-')">⍤🌻 ˟̫ː🌾⸝⸝☀️´-</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('ଽ🍮˚🍋ꕀ🍹ᯓ')">ଽ🍮˚🍋ꕀ🍹ᯓ</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji(' ॱଳ͘ 🍟◞🍕◜🍔˚ ༘ ⟡')"> ॱଳ͘ 🍟◞🍕◜🍔˚ ༘ ⟡</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col cols-x1-3 col-lg-4 col-sm-6 mb-4">
+                <div class="card">
+                  
+                  <div class="card-body"> 
+                    <div class="emoji" onclick="copyEmoji('﹆🚂³₃ 🌇ᯤ🍁✦.')">﹆🚂³₃ 🌇ᯤ🍁✦.</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pagination-container">
+              <nav aria-label="Page navigation example">
                 <ul class="pagination nav justify-content-center position-absolute bottom-0 start-50 translate-middle-x">
                   <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                    <a class="page-link" href="index.html" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="index.html">1</a></li>
+                  <li class="page-item"><a class="page-link" href="second.html">2</a></li>
                   <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                    <a class="page-link" href="second.html" aria-label="Next">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
                 </ul>
               </nav>
+              </div>
+            </div>
+
+
+
+
+
+            
         </div> 
         <!-- 引入 Bootstrap JS 和 Popper.js --> 
          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> 
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> 
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+
          <script>
           // 復制表情到選擇框 
           function copyEmoji(emoji) { 
-            document.getElementById('selectedEmoji').innerText += emoji; 
-        } 
+            document.getElementById('selectedEmoji').innerText += emoji
+        }; 
+
+        // 複製選擇框 
+        const clipboard = new ClipboardJS('.copyButton');
+          document.getElementById('copyButton').addEventListener('click', function() { 
+           alert("已複製內容到剪貼簿")}
+            );
+
           // 清除選擇框 
           document.getElementById('clearButton').addEventListener('click', function() { 
             document.getElementById('selectedEmoji').innerText = ''; }
             );
+
+
+          // 設定一個包含關鍵字和對應 URL 的陣列
+          const keywordData = [
+              { keyword: '粉', url: '/pink.html' },
+              { keyword: '粉色', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: '粉色系', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'pink', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              { keyword: 'JavaScript', url: 'https://developer.mozilla.org/zh-TW/docs/Web/JavaScript' },
+              { keyword: 'HTML', url: 'https://developer.mozilla.org/zh-TW/docs/Web/HTML' },
+              { keyword: 'CSS', url: 'https://developer.mozilla.org/zh-TW/docs/Web/CSS' },
+              { keyword: 'Python', url: 'https://www.python.org' },
+              
+
+          ];
+
+          // 控制選單開關的函式
+function toggleMenu() {
+  const menuControl = document.getElementById('menu_control');
+  menuControl.checked = !menuControl.checked;  // 切換checkbox的選中狀態
+}
+          // 取得搜尋欄位和搜尋按鈕
+          const searchButton = document.getElementById('searchButton');
+          const searchInput = document.getElementById('searchKeyword');
+
+          // 當按鈕被點擊時觸發
+          searchButton.addEventListener('click', () => {
+              // 取得使用者輸入的關鍵字
+              const searchTerm = searchInput.value.trim();
+
+              if (searchTerm) {
+                  // 在陣列中搜尋是否有匹配的關鍵字
+                  const result = keywordData.find(item => item.keyword.toLowerCase() === searchTerm.toLowerCase());
+
+                  if (result) {
+                      // 找到匹配的關鍵字，跳轉到對應的 URL
+                      window.location.href = result.url;
+                  } else {
+                      // 如果找不到匹配的關鍵字，顯示提示訊息
+                      alert('找不到匹配的關鍵字');
+                  }
+              } else {
+                  // 如果沒有輸入關鍵字，顯示提示訊息
+                  alert('請輸入關鍵字');
+              }
+          });
+          
          </script> 
+         <script src="script.js"></script>
     </body> 
 </html>

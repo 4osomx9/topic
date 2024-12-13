@@ -56,8 +56,86 @@
         
         body{
           /* background-image: url("/img/bg.png") ; */
-          background: linear-gradient(rgba(255, 255, 255, 0.92),rgba(243, 255, 214, 0.92)), url("/img/bg3.png") no-repeat 0% 20%/ cover;
+          background: linear-gradient(rgba(255, 255, 255, 0.92),rgba(243, 255, 214, 0.92)), url("img/bg3.png") no-repeat 0% 20%/ cover;
           min-height: 100vh;
+        }
+
+        /* 選取位置變色 */
+        .card:hover{
+          border-width:medium; 
+          border-style:dashed;;
+          border-color:green;
+        }
+
+        .pagination-container {
+          position: fixed; /* 固定定位 */
+          bottom: 0;       /* 距離視窗底部0 */
+          left: 50%;       /* 居中 */
+          transform: translateX(-50%); /* 居中對齊 */
+          z-index: 1000;   /* 確保在其他內容上方 */
+          
+          box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* 增加陰影效果 */
+          width: 100%;     /* 設置寬度 */
+          padding: 10px 0; /* 添加內邊距 */
+        }
+
+         /* 美化導航欄 */
+        .navbar {
+          background-color: #ffffff; /* 導航欄背景色 */
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加陰影效果 */
+          height: 100px;
+          position: relative; /* 設定為相對定位，防止被覆蓋 */
+          z-index: 999; /* 確保navbar顯示在內文之上，但不影響其他內容 */
+
+        }
+          
+        /* 美化導航項目 */
+        .navbar-nav .nav-link {
+          color: #333; /* 設置文字顏色 */
+          font-weight: 600; /* 加粗字體 */
+          text-transform: uppercase; /* 使文字大寫 */
+          letter-spacing: 1px; /* 增加字母間距 */
+          transition: color 0.3s ease; /* 文字顏色變換過渡效果 */
+        }
+
+        .navbar-nav .nav-link:hover {
+          color: #007bff; /* 懸停時顯示藍色 */
+        }
+
+        /* 搜索框樣式 */
+        .form-control {
+          border-radius: 20px; /* 搜索框圓角 */
+          border: 1px solid #007bff; /* 邊框顏色 */
+        }
+
+        /* 美化漢堡選單按鈕 */
+        .navbar-toggler {
+          border: none; /* 去除邊框 */
+          background-color: transparent; /* 背景透明 */
+          transition: transform 0.3s ease; /* 按鈕變換效果 */
+          
+        }
+        
+       
+        /* 當navbar打開時，內文不被覆蓋 */
+        .navbar-collapse {
+            position: relative;
+            z-index: 1000; /* 確保navbar-collapse不會覆蓋其他內容 */
+            background-color: #e6ffe3;
+        }
+
+        /* 設定內文的z-index，使其位於navbar之下 */
+        .container {
+            z-index: 1; /* 設定內文位於較低層 */
+        }
+
+        #navbarNav ul li a{
+          text-align: left;
+        }
+
+        .collapse.navbar-collapse{
+          background-color: #e6ffe3;
+
         }
         </style> 
     </head> 
